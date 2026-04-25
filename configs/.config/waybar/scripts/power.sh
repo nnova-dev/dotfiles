@@ -1,0 +1,20 @@
+#!/bin/bash
+
+options="󰌾  Lock\n󰍃  Logout\n󰜉  Reboot\n󰐥  Shutdown"
+
+selected=$(echo -e "$options" | walker --dmenu --placeholder "Power")
+
+case "$selected" in
+  "󰌾  Lock")
+    hyprlock
+    ;;
+  "󰍃  Logout")
+    hyprctl dispatch exit
+    ;;
+  "󰜉  Reboot")
+    systemctl reboot
+    ;;
+  "󰐥  Shutdown")
+    systemctl poweroff
+    ;;
+esac

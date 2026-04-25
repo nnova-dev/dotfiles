@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Vérifier si un argument est fourni
+if [ -z "$1" ]; then
+    echo "Usage: $0 [-t] <commande>"
+    echo "  -t : Lance dans Kitty avec --class et -e (pour les TUI)"
+    exit 1
+fi
+
+# Gestion du mode TUI
+if [ "$1" == "-t" ]; then
+    shift # Supprime -t des arguments
+    APP_NAME="$1"
+    # On construit la commande pour Kitty
+    if [ "$APP_NAME" == "fastfetch" ]; then
+        # Utilise le shell par défaut de l'utilisateur ($SHELL) pour garder la session interactive
+        COMMAND="kitty --class=$APP_NAME -e $SHELL -c 'fastfetch; exec $SHELL -i'"
+    else
+        COMMAND="kitty --hold --class=$APP_NAME -e $APP_NAME"
+    fi
+else
+    # Comportement standard (récupère tous les arguments restants)
+    COMMAND="$@"
+fi
+
+# Lancer la commande dans une fenêtre flottante via Hyprland
+# Note : Hyprland peut avoir du mal avec des commandes complexes dans dispatch exec si elles ne sont pas bien protégées
+hyprctl dispatch exec "[float;size 1200 600;center] $COMMAND"

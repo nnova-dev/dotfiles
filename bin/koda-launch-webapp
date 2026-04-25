@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Vérifie si un URL est passé en paramètre
+if [ -z "$1" ]; then
+    echo "Usage: koda-webapp <url>"
+    exit 1
+fi
+
+URL=$1
+
+chromium --app="$URL" --new-window &

@@ -1,0 +1,20 @@
+# Configuration Wofi minimaliste
+width=450
+height=400
+location=center
+show=drun
+prompt=Rechercher...
+
+# Style du composant (désactiver l'ascenseur)
+hide_scroll=true
+no_actions=true
+halign=fill
+orientation=vertical
+content_halign=fill
+filter_rate=50
+allow_markup=true
+allow_images=true
+image_size=20
+
+# Lancer les applications avec un seul clic de souris
+single_click=true

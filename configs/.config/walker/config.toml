@@ -1,0 +1,13 @@
+force_keyboard_focus = true
+close_when_open = true
+single_click_activation = true
+theme = "minimal"
+hide_quick_activation = true
+hide_action_hints = true
+
+[placeholders]
+"default" = { input = "", list = "" }
+
+[providers]
+default = ["desktopapplications"]
+empty = ["desktopapplications"]

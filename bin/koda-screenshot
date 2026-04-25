@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# 1. On demande la zone d'abord (slurp)
+# Si on appuie sur Echap, slurp renvoie une erreur et on arrête tout
+GEOM=$(slurp) || exit 0
+
+# 2. Dossier de sauvegarde
+DIR="$HOME/Pictures/Screenshots"
+mkdir -p "$DIR"
+FILE="$DIR/screenshot_$(date +%Y%m%d_%H%M%S).png"
+
+# 3. On capture la zone stockée dans $GEOM et on l'envoie vers le fichier et le clipboard
+grim -g "$GEOM" - | tee "$FILE" | wl-copy
+
+# 4. Petite notification de succès
+notify-send "Screenshot" "Zone capturée et copiée" -i camera-photo

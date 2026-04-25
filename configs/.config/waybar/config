@@ -1,0 +1,137 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": ["custom/distro", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "hyprland/submap",
+    "bluetooth",
+    "network",
+    "group/audio",
+    "custom/ram",
+    "custom/cpu",
+    "custom/battery"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{name}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    },
+    "all-outputs": true
+  },
+
+  "custom/distro": {
+    "format": "󰣇",
+    "on-click": "~/.local/share/koda/bin/koda-floating-window -t fastfetch",
+    "tooltip": false
+  },
+
+  "custom/ram": {
+    "format": "󰘚 {}",
+    "exec": "~/.config/waybar/scripts/ram.sh",
+    "interval": 5,
+    "return-type": "json",
+    "states": {
+      "warning": 80
+    },
+    "tooltip": true,
+    "on-click": "~/.local/share/koda/bin/koda-floating-window kitty --class=htop -e htop"
+  },
+  "custom/cpu": {
+    "format": "󰍛 {}",
+    "exec": "~/.config/waybar/scripts/cpu.sh",
+    "interval": 5,
+    "return-type": "json",
+    "states": {
+      "warning": 80
+    },
+    "tooltip": true,
+    "on-click": "~/.local/share/koda/bin/koda-floating-window kitty --class=btop -e btop"
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M}",
+    "format-alt": "{:%d/%m/%y}"
+  },
+  "network": {
+    "format-icons": ["󰖟"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰖪",
+    "interval": 3,
+    "tooltip": true,
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "Deconnecte",
+    "on-click": "~/.local/share/koda/bin/koda-floating-window kitty --class=impala -e impala"
+  },
+  "custom/power_profile": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/power_profile_status.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "~/.config/waybar/scripts/power_menu.sh"
+  },
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 8,
+    "on-click": "~/.config/waybar/scripts/battery.sh menu"
+  },
+  "bluetooth": {
+    "format": "󰂱 {num_connections}",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱 {num_connections}",
+    "format-no-controller": "",
+    "tooltip": true,
+    "tooltip-format": "Bluetooth: {status}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}    {device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}    {device_address}    {device_battery_percentage}%",
+    "on-click": "~/.local/share/koda/bin/koda-floating-window kitty --class=bluetui -e bluetui"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "scroll-step": 5,
+    "format-muted": "󰝟 0%",
+    "format-icons": {
+      "headphone": ["󰋋", "󰋋", "󰋋"],
+      "headset": ["󰋎", "󰋎", "󰋎"],
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "tooltip": true,
+    "tooltip-format": "{desc}",
+    "on-click": "~/.local/share/koda/bin/koda-floating-window kitty --class=wiremix -e wiremix"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+  "hyprland/submap": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/submap_tooltip.sh",
+    "tooltip": false
+  }
+}

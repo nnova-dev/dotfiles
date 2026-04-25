@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Attendre que hyprpaper soit complètement chargé
+sleep 1
+
+# Chemin du wallpaper par défaut
+WALLPAPER="/home/nnovadev/.local/share/koda/themes/adok/wallpapers/5-arch-minimalist.jpg"
+
+# Réappliquer le wallpaper via hyprctl
+hyprctl hyprpaper preload "$WALLPAPER"
+sleep 0.1
+hyprctl hyprpaper wallpaper ",$WALLPAPER"

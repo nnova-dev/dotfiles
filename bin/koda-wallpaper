@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+WALL_DIR="$HOME/.local/share/koda/themes/adok/wallpapers"
+
+# Sélection avec Walker
+SELECTED=$(ls "$WALL_DIR" | walker --dmenu)
+
+[[ -z "$SELECTED" ]] && exit 0
+
+FULL_PATH="$WALL_DIR/$SELECTED"
+
+# On envoie les commandes en redirigeant les erreurs vers le vide (2>/dev/null)
+hyprctl hyprpaper preload "$FULL_PATH" 2>/dev/null
+sleep 0.1
+hyprctl hyprpaper wallpaper ",$FULL_PATH" 2>/dev/null
+
+notify-send "Wallpaper" "Appliqué : $SELECTED"

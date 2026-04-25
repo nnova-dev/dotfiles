@@ -1,0 +1,159 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: #000;
+  color: #fff;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 3px 2px;
+  min-width: 9px;
+  min-height: 20px;
+  border-radius: 4px;
+  color: #fff;
+  transition: all 0.2s ease;
+  opacity: 0.5; /* Default inactive state (empty or occupied) */
+}
+
+#workspaces button:hover {
+  background-color: #333;
+}
+
+#workspaces button.active,
+#workspaces button.active.empty {
+  background-color: #111;
+  color: #aaa;
+  /* font-weight: bold; */
+  opacity: 1; /* Always fully opaque when active */
+}
+
+/* Remove default empty class behavior so occupied and empty look the same when inactive */
+#workspaces button.empty {
+  /* opacity: 0.5; is now the default for all inactive buttons above */
+}
+
+
+
+#bluetooth,
+#network,
+#audio,
+#custom-ram,
+#custom-cpu,
+#custom-power,
+#custom-power_profile,
+#custom-distro,
+#custom-battery {
+  min-width: 20px;
+  min-height: 20px;
+  margin: 3px 3px;
+  padding: 0px 5px;
+  border-radius: 4px;
+  background-color: #111;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+#custom-battery {
+  padding: 0 3px;
+}
+
+#custom-distro {
+  padding: 0 3px;
+}
+
+
+#custom-power_profile {
+  padding: 0 3px;
+}
+
+#audio {
+  padding: 0 8px;
+}
+
+#network {
+  min-width: 20px;
+  padding: 0 2px 0 1px;
+}
+
+#audio #pulseaudio {
+  background-color: #111;
+  padding-right: 4px;
+}
+
+#audio #pulseaudio-slider {
+  background-color: #111;
+  min-width: 80px;
+  padding: 0 0 0 4px;
+}
+
+#pulseaudio-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+#pulseaudio-slider trough {
+  min-height: 6px;
+  min-width: 60px;
+  border-radius: 3px;
+  background-color: #333;
+}
+
+#pulseaudio-slider highlight {
+  min-height: 6px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+#custom-ram.warning,
+#custom-cpu.warning,
+#custom-battery.warning {
+  color: #f0c000;
+  animation: blink 1s infinite;
+}
+
+#custom-battery.critical {
+  color: #F52727;
+  animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+#submap {
+  min-width: 20px;
+  min-height: 20px;
+  margin: 3px 3px;
+  padding: 0px 3px;
+  padding-right: 4px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 15px;
+}
+
+#submap.󰉋 {
+    background-color: #a6e3a1;
+    color: #11111b;
+}
+
+#submap.󰐥 {
+    background-color: #F52727;
+    color: #11111b;
+}
+
+

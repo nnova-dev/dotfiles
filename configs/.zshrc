@@ -1,3 +1,8 @@
+# --- KODA OS CONFIG ---
+export KODA_DIR="$HOME/.local/share/koda"
+# Ajoute tes scripts Koda au PATH pour pouvoir les lancer de n'importe où
+export PATH="$KODA_DIR/bin:$PATH"
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # export XDG_DATA_DIRS="/usr/share:/usr/local/share"
@@ -89,16 +94,14 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # --- ALIAS --
-alias reload-zsh="source ~/.zshrc"
-alias edit-zsh="nvim ~/.zshrc"
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias zreload="source ~/.zshrc"
+alias zedit="nvim ~/.zshrc"
 alias n="nvim ."
 alias ls='eza -lh --icons --group-directories-first'
-alias la='eza -aH --icons --group-directories-first'
+alias la='eza -laH --icons --group-directories-first'
 alias lt='eza --tree --level=2 --icons' # Affiche une arborescence
 alias cdiut='cd ~/Desktop/ressources/etudes/'
 alias cdiut2='cd ~/Desktop/ressources/etudes/s2/'
 alias cdiut1='cd ~/Desktop/ressources/etudes/s1/'
 alias python="python3"
-
-export PATH="$HOME/.local/share/koda/bin:$PATH"
+alias cdk="cd $KODA_DIR"

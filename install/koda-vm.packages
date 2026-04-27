@@ -1,0 +1,8 @@
+qemu-full
+virt-manager
+libvirt
+dnsmasq
+iptables
+swtpm
+virtualbox
+virtualbox-guest-iso

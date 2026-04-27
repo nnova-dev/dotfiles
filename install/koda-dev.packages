@@ -1,0 +1,14 @@
+# --- LANGAGES & RUNTIMES ---
+nodejs
+npm
+jdk21-openjdk
+maven
+rustup
+tk
+python-gobject
+gobject-introspection
+
+# --- OUTILS DEV ---
+libvips
+clang
+llvm

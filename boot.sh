@@ -12,7 +12,8 @@ ansi_art='
 
 clear
 echo -e "\e[1;34m$ansi_art\e[0m" # Blue Bold
-echo -e "\n   --- Koda OS Bootstrap ---\n"
+KODA_VER=$(cat ~/.local/share/koda/version 2>/dev/null || echo "dev")
+echo -e "   --- Koda OS Bootstrap v$KODA_VER ---\n"
 
 # Configuration du Repo
 KODA_REF="${KODA_REF:-main}"

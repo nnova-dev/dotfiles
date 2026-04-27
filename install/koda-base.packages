@@ -1,0 +1,75 @@
+# --- SYSTÈME DE BASE ---
+base
+base-devel
+linux
+linux-headers
+linux-firmware
+intel-ucode
+sudo
+networkmanager
+bluez
+bluez-utils
+brightnessctl
+power-profiles-daemon
+zram-generator
+xdg-user-dirs
+pacman-contrib
+# --- INTERFACE (HYPRLAND) ---
+hyprland
+hyprlock
+hyprpaper
+hyprpicker
+waybar
+wofi
+dunst
+nwg-look
+qt5-wayland
+qt6-wayland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-kde-agent
+ly
+# --- TERMINAL & UTILS ---
+kitty
+zsh
+zoxide
+tmux
+neovim
+git
+github-cli
+wget
+unzip
+zip
+7zip
+jq
+fzf
+fastfetch
+btop
+eza
+bat
+tree
+wl-clipboard
+grim
+slurp
+# --- SON ---
+pipewire
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+wireplumber
+libpulse
+wiremix
+# --- EXPLORATEUR DE FICHIERS ---
+thunar
+thunar-archive-plugin
+thunar-volman
+gvfs
+gvfs-mtp
+file-roller
+# --- POLICES (FONTS) ---
+noto-fonts
+noto-fonts-emoji
+ttf-jetbrains-mono-nerd
+ttf-ibm-plex
+otf-geist-mono-nerd
+ttf-nerd-fonts-symbols

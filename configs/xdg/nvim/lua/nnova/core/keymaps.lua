@@ -4,7 +4,12 @@ local keymap = vim.keymap -- for conciseness
 
 -- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+-- Clear search and stop snippet on escape
+-- keymap.set({ "i", "n", "s" }, "<esc>", function()
+--   vim.cmd("noh")
+--   vim.cmp.actions.snippet_stop()
+--   return "<esc>"
+-- end, { expr = true, desc = "Escape and Clear hlsearch" })
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
@@ -30,3 +35,9 @@ keymap.set("n", "<C-u", "<C-u>zz")
 
 keymap.set("n", "J", "mzJ`z")
 keymap.set("x", "<leader>p", "\"_dP")
+
+-- Resize window using <ctrl> arrow keys
+keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })

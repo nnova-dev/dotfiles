@@ -17,6 +17,7 @@ return {
         "eslint",
         -- my config
         "jdtls",
+        "gopls"
       },
     },
     dependencies = {

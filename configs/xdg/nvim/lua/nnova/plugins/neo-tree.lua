@@ -1,3 +1,41 @@
+-- return {
+--   "nvim-neo-tree/neo-tree.nvim",
+--   branch = "v3.x",
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",
+--     "nvim-tree/nvim-web-devicons",
+--     "MunifTanjim/nui.nvim",
+--   },
+--   config = function()
+--     require("neo-tree").setup({
+--       close_if_last_window = true,
+--       window = {
+--         width = 40,
+--         mappings = {
+--           -- Navigation style Vim (LazyVim)
+--           ["l"] = "open",
+--           ["h"] = "close_node",
+--
+--           -- Désactive l'espace qui est par défaut assigné à autre chose,
+--           -- pour éviter les conflits si ton <leader> est la touche Espace
+--           ["<space>"] = "none",
+--         },
+--       },
+--       filesystem = {
+--         follow_current_file = {
+--           enabled = true,
+--         },
+--         filtered_items = {
+--           hide_dotfiles = false,
+--           hide_gitignored = false,
+--         },
+--       },
+--     })
+--
+--     vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { desc = "Toggle File Explorer" })
+--   end,
+-- }
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
@@ -9,22 +47,32 @@ return {
   config = function()
     require("neo-tree").setup({
       close_if_last_window = true,
+      -- Configuration des icônes pour éviter les carrés oranges
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            added     = "✚",
+            modified  = "",
+            deleted   = "✖",
+            renamed   = "󰁔",
+            untracked = "",
+            ignored   = "",
+            unstaged  = "󰄱",
+            staged    = "",
+            conflict  = "",
+          },
+        },
+      },
       window = {
-        width = 30,
+        width = 40,
         mappings = {
-          -- Navigation style Vim (LazyVim)
           ["l"] = "open",
           ["h"] = "close_node",
-
-          -- Désactive l'espace qui est par défaut assigné à autre chose,
-          -- pour éviter les conflits si ton <leader> est la touche Espace
           ["<space>"] = "none",
         },
       },
       filesystem = {
-        follow_current_file = {
-          enabled = true,
-        },
+        follow_current_file = { enabled = true },
         filtered_items = {
           hide_dotfiles = false,
           hide_gitignored = false,
@@ -32,6 +80,7 @@ return {
       },
     })
 
+    -- Ta keymap
     vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { desc = "Toggle File Explorer" })
-  end,
-}
+  end, -- Ferme la fonction config
+} -- Ferme le return global

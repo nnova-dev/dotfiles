@@ -25,4 +25,4 @@ fi
 
 # Lancer la commande dans une fenêtre flottante via Hyprland
 # Note : Hyprland peut avoir du mal avec des commandes complexes dans dispatch exec si elles ne sont pas bien protégées
-hyprctl dispatch exec "[float;size 1200 600;center] $COMMAND"
+hyprctl dispatch exec "[float;size 1200 800;center] $COMMAND"

@@ -146,13 +146,13 @@ window#waybar {
   font-size: 15px;
 }
 
-#submap.󰉋 {
+#submap.󰋋 {
     background-color: #a6e3a1;
     color: #11111b;
 }
 
 #submap.󰐥 {
-    background-color: #F52727;
+    background-color: #FF5E5E;
     color: #11111b;
 }
 

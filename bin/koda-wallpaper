@@ -2,14 +2,21 @@
 
 WALL_DIR="$HOME/.local/share/koda/themes/adok/wallpapers"
 
-# Sélection avec Walker
-SELECTED=$(ls "$WALL_DIR" | walker --dmenu)
+# Vérification si le dossier existe
+[[ ! -d "$WALL_DIR" ]] && notify-send "Erreur" "Dossier wallpapers introuvable" && exit 1
+
+# Sélection avec Wofi au lieu de Walker
+# --dmenu : mode de sélection simple
+# --insensistive : ignore la casse
+# --prompt : texte affiché
+SELECTED=$(ls "$WALL_DIR" | wofi --dmenu --insensitive --prompt "Choisir un fond d'écran :")
 
 [[ -z "$SELECTED" ]] && exit 0
 
 FULL_PATH="$WALL_DIR/$SELECTED"
 
-# On envoie les commandes en redirigeant les erreurs vers le vide (2>/dev/null)
+# On envoie les commandes à hyprpaper
+# Note : tu utilises déjà hyprpaper sur ton installation Arch
 hyprctl hyprpaper preload "$FULL_PATH" 2>/dev/null
 sleep 0.1
 hyprctl hyprpaper wallpaper ",$FULL_PATH" 2>/dev/null

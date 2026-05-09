@@ -34,7 +34,6 @@
 
   "custom/distro": {
     "format": "󰣇",
-    "on-click": "~/.local/share/koda/bin/koda-floating-window -t fastfetch",
     "tooltip": false
   },
 
@@ -62,7 +61,7 @@
   },
   "clock": {
     "format": "{:%Y-%m-%d %H:%M}",
-    "format-alt": "{:%d/%m/%y}"
+    "tooltip": false
   },
   "network": {
     "format-icons": ["󰖟"],
@@ -76,13 +75,6 @@
     "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format-disconnected": "Deconnecte",
     "on-click": "~/.local/share/koda/bin/koda-floating-window kitty --class=impala -e impala"
-  },
-  "custom/power_profile": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/power_profile_status.sh",
-    "return-type": "json",
-    "interval": 2,
-    "on-click": "~/.config/waybar/scripts/power_menu.sh"
   },
   "custom/battery": {
     "exec": "~/.config/waybar/scripts/battery.sh",
@@ -131,7 +123,6 @@
   },
   "hyprland/submap": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/submap_tooltip.sh",
     "tooltip": false
   }
 }

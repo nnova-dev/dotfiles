@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {
@@ -39,6 +40,10 @@ return {
         "query",
         "vimdoc",
         "c",
+        "go",
+        "gomod",
+        "gosum",
+        "gowork",
         "cpp",
       },
       incremental_selection = {

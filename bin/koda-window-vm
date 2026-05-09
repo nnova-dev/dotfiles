@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+VM_NAME="kodaw"
+URI="qemu:///system"
+
+# Vérification de l'état
+STATUS=$(virsh --connect $URI domstate $VM_NAME)
+
+if [ "$STATUS" == "shut off" ] || [ "$STATUS" == "arrêt" ]; then
+    notify-send "Virtualization" "Démarrage de $VM_NAME..." -i qemu
+    virsh --connect $URI start $VM_NAME
+else
+    notify-send "Virtualization" "$VM_NAME est déjà en cours d'exécution." -i qemu
+fi
+
+# Correction de la commande : on retire --show-domain
+# -a (ou --attach) permet de se connecter à la VM dès qu'elle est prête
+virt-viewer --connect $URI --wait --attach "$VM_NAME" &

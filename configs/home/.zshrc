@@ -3,6 +3,8 @@ export KODA_DIR="$HOME/.local/share/koda"
 # Ajoute tes scripts Koda au PATH pour pouvoir les lancer de n'importe où
 export PATH="$KODA_DIR/bin:$PATH"
 
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # export XDG_DATA_DIRS="/usr/share:/usr/local/share"
@@ -27,6 +29,25 @@ bindkey '^[[B' history-search-forward
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
+
+cf() {
+  local dir
+  # On utilise eza au lieu de tree car c'est ce que tu as sur ton système
+  dir=$(fd --type d . "${1:-.}" | fzf --preview "eza --tree --icons -L 2 {} | head -200") && cd "$dir"
+}
+
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -ln 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+}
+
+# Sélectionner un processus et le tuer (SIGTERM)
+fk() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m --ansi --preview "echo {}" --preview-window=bottom:3:wrap | awk '{print $2}')
+  if [ "x$pid" != "x" ]; then
+    echo $pid | xargs kill -9
+  fi
+}
 
 # --- setup fzf theme ---
 # fg="#CBE0F0"
@@ -99,9 +120,24 @@ alias zedit="nvim ~/.zshrc"
 alias n="nvim ."
 alias ls='eza -lh --icons --group-directories-first'
 alias la='eza -laH --icons --group-directories-first'
-alias lt='eza --tree --level=2 --icons' # Affiche une arborescence
 alias cdiut='cd ~/Desktop/ressources/etudes/'
 alias cdiut2='cd ~/Desktop/ressources/etudes/s2/'
 alias cdiut1='cd ~/Desktop/ressources/etudes/s1/'
 alias python="python3"
 alias cdk="cd $KODA_DIR"
+alias fv='nvim $(fzf --preview "bat --color=always --style=numbers --line-range=:500 {}")'
+alias tree='eza --tree --icons'
+alias oc="opencode"
+
+alias kodaconf='nvim ~/.local/share/koda/DONE-BUT-NOT-SAVE'
+
+# Paramètres par défaut (couleurs, bordures, layout)
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=header:italic"
+
+# Utiliser 'fd' au lieu de 'find' pour être plus rapide et ignorer le .git
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# vim mode and reduce ESCAPE key timeout
+bindkey -v
+export KEYTIMEOUT=1

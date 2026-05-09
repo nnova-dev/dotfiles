@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Couleurs pour ton setup OLED
+GREEN="#b8bb26"  # Success (Vert Bright)
+YELLOW="#fabd2f" # Warning (Jaune vif)
+RED="#fb4934"    # Fail (Rouge)
+WHITE="#ebdbb2"  # Basic (Beige/Blanc de base)
+
+TITLE=$1
+MSG=$2
+STATUS=$3
+
+if [ "$STATUS" = "success" ]; then
+    dunstify -u normal -h string:frcolor:"$GREEN" "$TITLE" "$MSG"
+elif [ "$STATUS" = "warning" ]; then
+    dunstify -u normal -h string:frcolor:"$YELLOW" "$TITLE" "$MSG"
+elif [ "$STATUS" = "fail" ]; then
+    dunstify -u critical -h string:frcolor:"$RED" "$TITLE" "$MSG"
+elif [ "$STATUS" = "basic" ]; then
+    # Bordure blanche/beige de base
+    dunstify -u normal -h string:frcolor:"$WHITE" "$TITLE" "$MSG"
+else
+    # Fallback si tu ne mets pas d'argument
+    dunstify "$TITLE" "$MSG"
+fi

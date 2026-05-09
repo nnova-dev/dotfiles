@@ -47,3 +47,13 @@ return {
     vim.cmd.colorscheme "catppuccin"
   end,
 }
+-- return {
+--   "AlexvZyl/nordic.nvim",
+--   name = "nordic",
+--   priority = 1000,
+--   config = function()
+--     vim.cmd.colorscheme "catppuccin"
+--   end,
+-- }
+
+

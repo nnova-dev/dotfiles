@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Vérifier si un argument est fourni
+if [ -z "$1" ]; then
+    echo "Usage: $0 <commande_tui>"
+    exit 1
+fi
+
+# Récupérer le chemin du dossier courant pour appeler le script parent
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+# Appeler koda-floating-window avec l'option -t
+"$SCRIPT_DIR/koda-floating-window" -t "$@"
